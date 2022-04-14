@@ -60,7 +60,7 @@ router.post("/register", async (req, res) => {
     };
     // sign the jwt and send it
     const token = await jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: 600 * 60,
+      expiresIn: 60 * 60,
     });
     res.json({ token });
   } catch (err) {

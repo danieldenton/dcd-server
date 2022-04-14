@@ -21,5 +21,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api-v1/users", require("./controllers/api-v1/users"));
+app.use("/api-v1/posts", require("./controllers/api-v1/posts"));
+app.use("/api-v1/faves", require("./controllers/api-v1/faves"));
 
 app.listen(PORT, () => console.log(`connected to port ${PORT}`));

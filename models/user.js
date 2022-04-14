@@ -13,12 +13,16 @@ const PostSchema = new mongoose.Schema(
   }
 );
 
+const FaveSchema = new mongoose.Schema({
+  favorite: String,
+});
+
 const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
   profile_url: String,
-  favorites: String,
+  faves: [FaveSchema],
   posts: [PostSchema],
 });
 

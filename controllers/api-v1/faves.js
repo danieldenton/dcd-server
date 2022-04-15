@@ -10,6 +10,7 @@ router.post("/", requiresToken, async (req, res) => {
     const foundUser = res.locals.user;
     foundUser.faves.push({
       favorite: req.body.favorite,
+      title: req.body.title,
     });
     await foundUser.save();
     res.status(201).json({ msg: "favorite posted to db" });

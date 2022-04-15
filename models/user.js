@@ -15,6 +15,7 @@ const PostSchema = new mongoose.Schema(
 
 const FaveSchema = new mongoose.Schema({
   favorite: String,
+  title: String,
 });
 
 const UserSchema = new mongoose.Schema({

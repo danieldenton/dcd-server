@@ -127,9 +127,8 @@ router.post("/login", async (req, res) => {
 // DELETE /users/:id -- DESTROY user document with :id and its subdocs
 router.delete("/:id", requiresToken, async (req, res) => {
   try {
-    const foundUser = await db.User.findById(req.params.id);
-
-    if (res.locals.user.id === foundUser.id) {
+    const foundUser = await db.User.findById(res.locals.user.id);
+    if (foundUser) {
       foundUser.remove();
       res.status(200).json({ msg: "user successfully deleted" });
     } else res.json({ msg: "invalid action" });

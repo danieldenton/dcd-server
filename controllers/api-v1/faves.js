@@ -9,7 +9,7 @@ router.post("/", requiresToken, async (req, res) => {
   try {
     const foundUser = res.locals.user;
     foundUser.faves.push({
-      favorite: req.body.favorite,
+      image: req.body.image,
       title: req.body.title,
     });
     await foundUser.save();

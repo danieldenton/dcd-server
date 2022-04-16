@@ -4,17 +4,6 @@ const requiresToken = require("./requiresToken");
 
 const db = require("../../models");
 
-router.get("/", async (req, res) => {
-  try {
-    const allUsers = await db.User.find({});
-    const posts = allUsers.posts;
-    res.json(posts);
-  } catch (err) {
-    console.log(err);
-    res.status(503).json({ msg: "server error" });
-  }
-});
-
 router.post("/", requiresToken, async (req, res) => {
   try {
     const foundUser = res.locals.user;
@@ -32,23 +21,24 @@ router.post("/", requiresToken, async (req, res) => {
   }
 });
 
-router.put("/", requiresToken, async (req, res) => {
+router.put("/:id", requiresToken, async (req, res) => {
   try {
     const foundUser = await db.User.findOne({
-      "posts._id": req.body.postId,
+      "posts._id": req.params.id,
     });
-    foundUser.posts.push(req.body);
-    await foundUser.save();
-    res
-      .status(201)
-      .json({ updatedUser: foundUser, commenter: res.locals.user.name });
+    const foundPost = foundUser.posts.id(req.params.id);
+    if (res.locals.user.id === foundUser.id) {
+      foundPost.set(req.body);
+      await foundUser.save();
+      res.status(200).json(foundUser);
+    } else res.json({ msg: "invalid action" });
   } catch (err) {
     console.log(err);
     res.status(503).json({ msg: "server error" });
   }
 });
 
-router.delete("/", requiresToken, async (req, res) => {
+router.delete("/:id", requiresToken, async (req, res) => {
   try {
     const foundUser = await db.User.findOne({
       "post._id": req.params.id,

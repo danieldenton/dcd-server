@@ -8,6 +8,7 @@ router.post("/", requiresToken, async (req, res) => {
   try {
     const foundUser = res.locals.user;
     foundUser.posts.push({
+      creator: req.body.creator,
       image: req.body.image,
       title: req.body.title,
       text: req.body.text,

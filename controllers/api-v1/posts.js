@@ -29,7 +29,7 @@ router.put("/:id", requiresToken, async (req, res) => {
     });
     const foundPost = foundUser.posts.id(req.params.id);
     if (res.locals.user.id === foundUser.id) {
-      foundPost.set(req.body);
+      foundPost.set(req.body.text);
       await foundUser.save();
       res.status(200).json(foundUser);
     } else res.json({ msg: "invalid action" });

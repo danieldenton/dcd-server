@@ -43,10 +43,11 @@ router.put("/:id", requiresToken, async (req, res) => {
 router.delete("/:id", requiresToken, async (req, res) => {
   try {
     const foundUser = await db.User.findOne({
-      "post._id": req.params.id,
+      "posts._id": req.params.id,
     });
+    console.log(foundUser);
     const foundPost = foundUser.posts.id(req.params.id);
-    if (foundUser.id === res.locals.user.id) {
+    if (res.locals.user.id === foundUser.id) {
       foundPost.remove();
       await foundUser.save();
       res.status(200).json({ msg: "post successfully deleted" });

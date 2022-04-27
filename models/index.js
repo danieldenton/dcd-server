@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const MONGODB_URI = process.env.MONGODB_URI;
 // || "mongodb://127.0.0.1/dcd";
 
-("mongoose.connect(MONGODB_URI)");
+// ("mongoose.connect(MONGODB_URI)");
 
 const db = mongoose.connection;
 

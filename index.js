@@ -17,7 +17,7 @@ const middleWare = (req, res, next) => {
 app.use(middleWare);
 
 app.get("/", (req, res) => {
-  res.json({ msg: "Welcome to Deep Cuts Discovery" });
+  res.json({ msg: "Welcome to Deep Cut Discovery" });
 });
 
 app.use("/api-v1/users", require("./controllers/api-v1/users"));

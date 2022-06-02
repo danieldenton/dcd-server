@@ -107,23 +107,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// PUT /users/:id -- UPDATE user profile photo
-// router.put("/:id", newPics.single("image"), requiresToken, async (req, res) => {
-//   try {
-//     if (!req.file) return res.status(400).json({ msg: "no file uploaded" });
-//     const cloudinaryImageData = await cloudinary.uploader.upload(req.file.path);
-//     console.log(cloudinaryImageData);
-//     await db.User.findByIdAndUpdate(req.params.id, {
-//       profile_url: cloudinaryImageData.public_id,
-//     });
-//     unlinkSync(req.file.path);
-//     res.status(201).json({ msg: "upload success" });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(503).json({ msg: "you should look at the server console" });
-//   }
-// });
-
 // DELETE /users/:id -- DESTROY user document with :id and its subdocs
 router.delete("/:id", requiresToken, async (req, res) => {
   try {

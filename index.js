@@ -10,6 +10,14 @@ app.use(cors());
 app.use(express.json());
 
 const middleWare = (req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://deepcutdiscovery.netlify.app"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   console.log(`incoming request: ${req.method} - ${req.url}`);
   next();
 };

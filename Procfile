@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-web: node .
+web:node.
 =======
-web: node .
+web:node.
 >>>>>>> main

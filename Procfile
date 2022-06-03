@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-web:node index.js
+web: node .
 =======
-web:node index.js
+web: node .
 >>>>>>> main

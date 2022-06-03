@@ -15,10 +15,10 @@ const middleWare = (req, res, next) => {
   //   "https://deepcutdiscovery.netlify.app",
   //   "http://localhost:3000/"
   // );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept"
+  // );
   console.log(`incoming request: ${req.method} - ${req.url}`);
   next();
 };
